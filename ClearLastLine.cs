@@ -9,11 +9,11 @@ class Test
         Console.WriteLine("             Test2");
         Console.WriteLine("Test3");
         Thread.Sleep(1000);
-        ClearLastNLines(3);
+        ClearLines(3);
         Console.ReadLine();
     }
 
-    public static void ClearLastNLines(int NumberOfLines) 
+    public static void ClearLines(int NumberOfLines) 
     {
         int currentLineCursorStart = Console.CursorTop;
         if (Console.CursorTop >= NumberOfLines)
