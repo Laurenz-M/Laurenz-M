@@ -6,28 +6,27 @@ class Test
     static void Main()
     {
         Console.WriteLine("Test");
-        Console.Write("             Test2");
+        Console.WriteLine("             Test2");
+        Console.WriteLine("Test3");
         Thread.Sleep(1000);
-        ClearLastNLines(2);
+        ClearLastNLines(3);
         Console.ReadLine();
     }
 
-    /*public static void ClearCurrentConsoleLine()
-    {
-        int currentLineCursor = Console.CursorTop;
-        Console.SetCursorPosition(0, Console.CursorTop);
-        Console.Write(new string(' ', Console.WindowWidth));
-        Console.SetCursorPosition(0, currentLineCursor);
-    }*/
-
     public static void ClearLastNLines(int NumberOfLines) 
     {
-        for(int LineNumber = 0; LineNumber < NumberOfLines; LineNumber++)
+        int currentLineCursorStart = Console.CursorTop;
+        if (Console.CursorTop >= NumberOfLines)
         {
-            int currentLineCursor = Console.CursorTop;
-            Console.SetCursorPosition(0, Console.CursorTop - LineNumber);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, currentLineCursor);
+            for (int LineNumber = 0; LineNumber <= NumberOfLines; LineNumber++)
+            {
+                int currentLineCursor = Console.CursorTop;
+                Console.SetCursorPosition(0, Console.CursorTop - LineNumber);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, currentLineCursor);
+            }
+            Console.SetCursorPosition(0, currentLineCursorStart - NumberOfLines);
         }
+        else throw new ApplicationException("Can't clear more lines than available!");  //Console.WriteLine("Error!");
     }
 }
