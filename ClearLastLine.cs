@@ -27,6 +27,6 @@ class Test
             }
             Console.SetCursorPosition(0, currentLineCursorStart - NumberOfLines);
         }
-        else throw new ApplicationException("Can't clear more lines than available!");  //Console.WriteLine("Error!");
+        else throw new ApplicationException("Can't clear more lines than available!");
     }
 }
